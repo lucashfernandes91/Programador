@@ -1,0 +1,14 @@
+<phpunit 
+    bootstrap="bootstrap.php" 
+    colors="true"
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true">
+    <testsuite name="Test Suite">
+        <directory>.</directory>
+    </testsuite>
+
+    <logging>
+        <log type="testdox-text" target="php://stdout" showUncoveredFiles="true"/>
+    </logging>
+</phpunit>
