@@ -2,28 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Projeto;
 
-use App\Http\Requests\ProjetosUpsertRequest;
-use App\Http\Resources\ProjetosJson;
+use Illuminate\Http\Request;
 use App\Http\Resources\ProjetosCollection;
+use App\Http\Resources\ProjetosJson;
+use App\Http\Requests\ProjetosUpsertRequest;
+
 
 class ProjetosController extends Controller
 {
     public function index()
     {
-    	$projetos = Projeto::all();
-    	
-    	//return response()->json(($projetos), 200);
-        return new ProjetosCollection($projetos);
+      return new ProjetosCollection(Projeto::all());
     }
 
     public function store(ProjetosUpsertRequest $request)
     {
-    	$projeto = new Projeto;
-		$projeto = $projeto->create($request->all());	
+      $projeto = new Projeto([
+        'nome'      => $request->get('nome'),
+        'descricao' => $request->get('descricao'),
+        'dt_inicio' => $request->get('dt_inicio'),
+        'dt_fim'    => $request->get('dt_fim')
+      ]);
 
-        return new ProjetosJson($projeto);
+      $projeto->save();
+
+      return new ProjetosJson($projeto);
+    }
+
+    public function delete($id)
+    {
+      $projeto = Projeto::find($id);
+      $projeto->delete();
+
+      return response()->json('Registro deletado com sucesso!');
     }
 }

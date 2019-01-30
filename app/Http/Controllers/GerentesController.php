@@ -4,25 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Gerente;
-
+use App\Http\Resources\GerenteJson;
 use App\Http\Requests\GerentesUpsertRequest;
-use App\Http\Resources\GerentesJson;
-
 
 class GerentesController extends Controller
 {
+ 
     /*public function index()
     {
-    	$gerentes = Gerente::all();
-
-    	return ($gerentes);
+ 	   return new GerentesCollection(Gerente::all());
     }*/
 
 	public function store(GerentesUpsertRequest $request)
 	{
-		$gerente = new Gerente;
-		$gerente = $gerente->create($request->all());
+		$gerente = new Gerente([
+			'nome'		 => $request->get('nome'),
+			'projeto_id' => $request->get('projeto_id')
+		]);
 
-		return new GerentesJson($gerente);
+		$gerente->save();
+
+		//return new GerenteJson($gerente);
+		return response()->json('Criado com sucesso!');
 	}
 }

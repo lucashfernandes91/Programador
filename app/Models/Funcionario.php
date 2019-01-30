@@ -16,3 +16,4 @@ class Funcionario extends Model
 
     public $timestamps = false;
 }
+

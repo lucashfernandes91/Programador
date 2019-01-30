@@ -3,25 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\FuncionariosUpsertRequest;
 use App\Models\Funcionario;
 
-use App\Http\Requests\FuncionariosUpsertRequest;
 use App\Http\Resources\FuncionariosJson;
 
 class FuncionariosController extends Controller
 {
-    /*public function index()
-    {
-    	$funcionarios = Funcionario::all();
-
-    	return $funcionarios;
-    }*/
-
     public function store(FuncionariosUpsertRequest $request)
     {
-    	$funcionario = new Funcionario;
-    	$funcionario = $funcionario->create($request->all());
+        $funcionario = new Funcionario([
+            'nome'       => $request->get('nome'),
+            'projeto_id' => $request->get('projeto_id'),
+            'gerente_id' => $request->get('gerente_id'),
+        ]);
 
-    	return new FuncionariosJson($funcionario);
+        $funcionario->save();
+
+        return new FuncionariosJson($funcionario);
     }
 }

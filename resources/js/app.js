@@ -1,34 +1,52 @@
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
 window.Vue = require('vue');
 
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
 
-import Vue from 'vue';
-import BootstrapVue from 'bootstrap-vue';
-Vue.use(BootstrapVue);
+import VueAxios from 'vue-axios';
+import axios from 'axios';
 
-
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
-
-
-Vue.component('projetos', require('./components/ProjetosComponent.vue').default);
-Vue.component('example', require('./components/ExampleComponent.vue').default);
+import App from './App.vue';
+Vue.use(VueAxios, axios);
 
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+import CreateComponent from './components/projetos/CreateComponent.vue';
+import IndexComponent from './components/projetos/IndexComponent.vue';
 
-const app = new Vue({
-    el: '#app'
-});
+
+import CreateManager from './components/gerentes/CreateComponent.vue';
+
+
+import CreateEmployee from './components/funcionarios/CreateComponent.vue';
+
+const routes = [
+  {
+      name: 'home',
+      path: '/projeto'
+  },
+  {
+      name: 'create-project',
+      path: '/create/project',
+      component: CreateComponent
+  },
+  {
+      name: 'projetos',
+      path: '/projetos',
+      component: IndexComponent
+  },
+  {
+      name: 'create-manager',
+      path: '/create/manager',
+      component: CreateManager
+  },
+  {
+      name: 'create-employee',
+      path: '/create/employee',
+      component: CreateEmployee
+  }
+];
+
+const router = new VueRouter({ mode: 'history', routes: routes});
+const app = new Vue(Vue.util.extend({ router }, App)).$mount('#app');

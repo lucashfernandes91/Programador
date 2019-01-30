@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ProjetosUpsertRequest extends FormRequest
 {
-   /**
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -17,7 +17,7 @@ class ProjetosUpsertRequest extends FormRequest
             "nome"      => "required",
             "descricao" => "required",
             "dt_inicio" => "required",
-            "dt_fim"    => "required"
-        ]; 
+            "dt_fim"    => "required",
+        ];
     }
 }

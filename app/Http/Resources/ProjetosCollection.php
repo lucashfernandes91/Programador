@@ -15,25 +15,13 @@ class ProjetosCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        //return parent::toArray($request);
-        /*return [
-            'data' => $this->collection->transform(function (Projetos $projetos) 
-                {
-                    return[
-                   'nome' => $this->$projetos->nome
-               ];
-                }),               
-        ];*/
-        //return ['data' => $this->collection];
-
         return $this->collection->transform(function(Projeto $projeto) {
             return [
-                'Id'             => $projeto->id,
-                'Descrição'      => $projeto->descricao,
-                'Data de Inicio' => $projeto->dt_inicio,
-                'Data Final'     => $projeto->dt_fim
+                'id'        => $projeto->id,
+                'descricao' => $projeto->descricao,
+                'dt_inicio' => $projeto->dt_inicio,
+                'dt_fim'    => $projeto->dt_fim
             ];
         });
-
     }
 }
