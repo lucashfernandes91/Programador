@@ -1,7 +1,14 @@
 
 Faça fork do repositório. Cada diretório (backend,frontend) contem um README com as descrição da tarefa. Codifique e faça um pull request ou me envie os códigos ;)
 
+## Comando para instalar as dependências 
+composer install
+npm install
+npm install vue-router vue-axios --save
 
+# Rodar aplicação
+php artisan serve
+npm run watch
 
 
 ## Conhecimentos Desejável
