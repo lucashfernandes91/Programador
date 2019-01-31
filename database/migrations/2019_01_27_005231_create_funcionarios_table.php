@@ -17,7 +17,7 @@ class CreateFuncionariosTable extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->integer('projeto_id')->unsigned();
-            $table->integer('gerente_id')->unsigned()->nullable();
+            $table->integer('gerente_id')->unsigned();
 
             $table->foreign('projeto_id')->references('id')->on('projetos');
             $table->foreign('gerente_id')->references('id')->on('funcionarios');            

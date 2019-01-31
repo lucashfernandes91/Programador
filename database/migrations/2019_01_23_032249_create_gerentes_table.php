@@ -18,7 +18,9 @@ class CreateGerentesTable extends Migration
             $table->string('nome');
             $table->integer('projeto_id')->unsigned();
 
-            $table->foreign('projeto_id')->references('id')->on('projetos');
+            $table->foreign('projeto_id')->references('id')->on('projetos')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
         });
     }
 
