@@ -14,6 +14,11 @@ class FuncionariosJson extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            "id"         => $this->id,
+            "Projeto_id" => $this->projeto_id,
+            "Gerente_id" => $this->gerente_id,
+            
+        ];
     }
 }
