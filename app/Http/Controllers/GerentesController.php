@@ -4,17 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Gerente;
-use App\Http\Resources\GerenteJson;
+use App\Http\Resources\GerentesJson;
 use App\Http\Requests\GerentesUpsertRequest;
 
 class GerentesController extends Controller
 {
- 
-    /*public function index()
-    {
- 	   return new GerentesCollection(Gerente::all());
-    }*/
-
 	public function store(GerentesUpsertRequest $request)
 	{
 		$gerente = new Gerente([
@@ -24,7 +18,7 @@ class GerentesController extends Controller
 
 		$gerente->save();
 
-		//return new GerenteJson($gerente);
+		//return new GerentesJson($gerente);
 		return response()->json('Criado com sucesso!');
 	}
 }
