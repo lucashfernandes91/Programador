@@ -18,6 +18,7 @@ class ProjetosCollection extends ResourceCollection
         return $this->collection->transform(function(Projeto $projeto) {
             return [
                 'id'        => $projeto->id,
+                'nome'      => $projeto->nome,
                 'descricao' => $projeto->descricao,
                 'dt_inicio' => $projeto->dt_inicio,
                 'dt_fim'    => $projeto->dt_fim
