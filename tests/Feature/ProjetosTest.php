@@ -18,7 +18,6 @@ class ProjetoTest extends TestCase
 		];
 
         $post = $this->json('POST', '/api/projetos/create',$projeto)->assertStatus(201);
-        $delete = $this->json('DELETE', '/api/projetos/delete/' . $projeto['Id']);
     }
 
     public function testGettingAllProjects()
@@ -34,9 +33,5 @@ class ProjetoTest extends TestCase
 		        'dt_fim'
 		    ]]
 		]);
-    }
-
-   
-
-
+    }  
 }
