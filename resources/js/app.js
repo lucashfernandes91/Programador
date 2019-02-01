@@ -23,8 +23,9 @@ import CreateEmployee from './components/funcionarios/CreateComponent.vue';
 
 const routes = [
   {
-      name: 'home',
-      path: '/projeto'
+      name: '/',
+      path: '/projetos',
+      component: IndexComponent
   },
   {
       name: 'create-project',

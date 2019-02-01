@@ -14041,8 +14041,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_axios___default.a, __WEBPACK_IMPORTED_MO
 
 
 var routes = [{
-    name: 'home',
-    path: '/projeto'
+    name: '/',
+    path: '/projetos',
+    component: __WEBPACK_IMPORTED_MODULE_5__components_projetos_IndexComponent_vue___default.a
 }, {
     name: 'create-project',
     path: '/create/project',

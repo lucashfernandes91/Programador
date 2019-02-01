@@ -5,5 +5,5 @@ Route::get('/{any}', function () {
 })->where('any', '.*');
 
 Route::get('/', function(){
-	return view('projetos');
+	return view('index');
 });
