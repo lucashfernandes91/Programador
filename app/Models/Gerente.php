@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Gerente extends Model
 {
-    protected $table = 'gerentes';
-
     protected $fillable = [
     	'nome',
     	'projeto_id'
